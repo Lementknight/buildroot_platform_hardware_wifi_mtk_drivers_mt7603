@@ -135,7 +135,7 @@ VOID RTMP_OS_Del_Timer(
 	IN	NDIS_MINIPORT_TIMER		*pTimer,
 	OUT	BOOLEAN					*pCancelled)
 {
-	*pCancelled = del_timer_sync(pTimer);	
+	*pCancelled = timer_delete_sync(pTimer);	
 }
 
 	

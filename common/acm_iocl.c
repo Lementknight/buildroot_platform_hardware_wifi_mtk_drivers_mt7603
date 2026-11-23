@@ -3072,7 +3072,7 @@ VOID AcmCmdSimDataRv(
 	ACMR_TIMER_ENABLE(FlgIsTimerEnabled, gTimerSim, ACM_STREAM_CHECK_OFFSET);
 
 #if 0
-	del_timer(&gTimerSim);
+	timer_delete(&gTimerSim);
 	gTimerSim.expires = jiffies + 10; /* 100 ms */
 	add_timer(&gTimerSim);
 #endif
@@ -3206,7 +3206,7 @@ VOID AcmCmdSimDataTx(
 	ACMR_TIMER_ENABLE(FlgIsTimerEnabled, gTimerSim, ACM_STREAM_CHECK_OFFSET);
 
 #if 0
-	del_timer(&gTimerSim);
+	timer_delete(&gTimerSim);
 	gTimerSim.expires = jiffies + ACM_STREAM_CHECK_OFFSET; /* 100 ms */
 	add_timer(&gTimerSim);
 #endif
@@ -3678,7 +3678,7 @@ VOID AcmCmdSimNonQoSDataRv(
 	ACMR_TIMER_ENABLE(FlgIsTimerEnabled, gTimerSim, ACM_STREAM_CHECK_OFFSET);
 
 #if 0
-	del_timer(&gTimerSim);
+	timer_delete(&gTimerSim);
 	gTimerSim.expires = jiffies + 10; /* 100 ms */
 	add_timer(&gTimerSim);
 #endif
