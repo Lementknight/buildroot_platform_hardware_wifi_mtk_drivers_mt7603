@@ -535,7 +535,7 @@ WFLAGS += -DSYSTEM_LOG_SUPPORT -DRT28xx_MODE=$(RT28xx_MODE) -DCHIPSET=$(MODULE) 
 WFLAGS += -DCONFIG_RA_NAT_NONE
 #end of /* APsoc Specific */
 
-WFLAGS += -I$(RT28xx_DIR)/include
+WFLAGS += -I/home/lement/mt7603u/include
 
 ifneq (,$(findstring MSTAR,$(PLATFORM)))
 WFLAGS += -DMSTAR_SUPPORT
@@ -2368,7 +2368,7 @@ ifeq ($(PLATFORM),PC)
 	export CFLAGS
     else
 	# Linux 2.6
-	EXTRA_CFLAGS := $(WFLAGS) 
+	ccflags-y := $(WFLAGS) 
     endif
 endif
 
@@ -2379,19 +2379,19 @@ export CFLAGS
 endif
 
 
-EXTRA_CFLAGS += -I$(RT28xx_DIR)/include -I$(LINUX_SRC)/include -I$(RT28xx_DIR)/include -I$(LINUX_SRC)/arch/$(ARCH)/include $(WFLAGS)
-export EXTRA_CFLAGS
+ccflags-y += -I/home/lement/mt7603u/include -I$(LINUX_SRC)/include -I/home/lement/mt7603u/include -I$(LINUX_SRC)/arch/$(ARCH)/include $(WFLAGS)
+export ccflags-y
 
 ifeq ($(PLATFORM),MT7620)
-        EXTRA_CFLAGS := $(WFLAGS) 
+        ccflags-y := $(WFLAGS) 
 endif
 
 ifeq ($(PLATFORM),MT7621)
-        EXTRA_CFLAGS := $(WFLAGS)
+        ccflags-y := $(WFLAGS)
 endif
 
 ifeq ($(PLATFORM),MSTAR)
 WFLAGS += -Wframe-larger-than=2048
 WFLAGS += -DCCN3_TV_SUPPORT
-        EXTRA_CFLAGS := $(WFLAGS)
+        ccflags-y := $(WFLAGS)
 endif
